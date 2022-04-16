@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "BikeRaceTimer/1.0.0": {
+        "runtime": {
+          "BikeRaceTimer.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "BikeRaceTimer/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
