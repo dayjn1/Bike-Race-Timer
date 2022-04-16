@@ -13,16 +13,16 @@ namespace BikeRaceTimer
             CountDown.Interval = 1000;
             CountUp.Interval = 1000;
             TimeSpan time = TimeSpan.FromSeconds(CDElapsedSeconds);
-            label1.Text = time.ToString(@"mm\:ss");
+            label1.Text = time.ToString(@"hh\:mm\:ss");
         }
 
         private void CountDown_Tick(object sender, EventArgs e)
         {
             CDElapsedSeconds--;
             TimeSpan time = TimeSpan.FromSeconds(CDElapsedSeconds);
-            label1.Text = time.ToString(@"mm\:ss");
+            label1.Text = time.ToString(@"hh\:mm\:ss");
 
-            if(CDElapsedSeconds == 0)
+            if (CDElapsedSeconds == 0)
             {
                 CountDown.Enabled = false;
                 CountUp.Enabled = true;
@@ -76,31 +76,21 @@ namespace BikeRaceTimer
             LapCounter.Text = LapsToGo.ToString();
         }
 
-        public void EnableCD()
+        public void SetCountDownDone()
         {
-            CountDown.Enabled = true;
+            CountDownDone = true;
         }
 
-        public void DisableCD()
+        public void UnsetCountDownDone()
         {
-            CountDown.Enabled = false;
+            CountDownDone = false;
         }
 
-        public void EnableCU()
-        {
-            CountUp.Enabled = true;
-        }
 
-        public void DisableCU()
-        {
-            CountUp.Enabled = false;
-        }
-
-        public void UpdateVals(int CD, int CU, bool CDDone)
+        public void UpdateVals(int CD, int CU)
         {
             CDElapsedSeconds = CD;
             CUElapsedSeconds = CU;
-            CountDownDone = CDDone;
         }
     }
 }

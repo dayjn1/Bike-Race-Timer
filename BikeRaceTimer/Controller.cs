@@ -38,13 +38,7 @@ namespace BikeRaceTimer
         {
             if (CDSelect.Checked)
             {
-                EnableCD = true;
-                EnableCU = false;
-            }
-            else
-            {
-                EnableCD = false;
-                EnableCU = true;
+                MTB.UnsetCountDownDone();
             }
         }
 
@@ -52,13 +46,7 @@ namespace BikeRaceTimer
         {
             if (CUSelect.Checked)
             {
-                EnableCU = true;
-                EnableCD = false;
-            }
-            else
-            {
-                EnableCU = false;
-                EnableCD = true;
+                MTB.SetCountDownDone();
             }
         }
 
@@ -82,6 +70,11 @@ namespace BikeRaceTimer
             CDMinutes.Value = CDMin;
 
             MTB.ResetLap();
+
+            int CDTotTime = CDMin * 60 + CDSec;
+            int CUTotTime = CUHrs * 3600 + CUMin * 60 + CUSec;
+
+            MTB.UpdateVals(CDTotTime, CUTotTime);
         }
 
         private void CDMinutes_ValueChanged(object sender, EventArgs e)
@@ -125,7 +118,7 @@ namespace BikeRaceTimer
             int CUTotTime = CUHrs * 3600 + CUMin * 60 + CUSec;
 
 
-            MTB.UpdateVals(CDTotTime, CUTotTime, EnableCD);
+            MTB.UpdateVals(CDTotTime, CUTotTime);
         }
     }
 }

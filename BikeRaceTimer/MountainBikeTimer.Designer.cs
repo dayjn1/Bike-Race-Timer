@@ -45,10 +45,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Impact", 120F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(66, 444);
+            this.label1.Font = new System.Drawing.Font("Impact", 300F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(-54, -26);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(595, 243);
+            this.label1.Size = new System.Drawing.Size(1487, 609);
             this.label1.TabIndex = 0;
             this.label1.Text = "label1";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -61,10 +61,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Impact", 60F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(1234, 238);
+            this.label2.Font = new System.Drawing.Font("Impact", 100.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(505, 583);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(318, 244);
+            this.label2.Size = new System.Drawing.Size(521, 408);
             this.label2.TabIndex = 3;
             this.label2.Text = "Laps \r\nTo Go: ";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -73,10 +73,10 @@
             // 
             this.LapCounter.AutoSize = true;
             this.LapCounter.BackColor = System.Drawing.Color.Transparent;
-            this.LapCounter.Font = new System.Drawing.Font("Impact", 200F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.LapCounter.Location = new System.Drawing.Point(1216, 516);
+            this.LapCounter.Font = new System.Drawing.Font("Impact", 250F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.LapCounter.Location = new System.Drawing.Point(995, 536);
             this.LapCounter.Name = "LapCounter";
-            this.LapCounter.Size = new System.Drawing.Size(350, 407);
+            this.LapCounter.Size = new System.Drawing.Size(438, 509);
             this.LapCounter.TabIndex = 4;
             this.LapCounter.Text = "0";
             this.LapCounter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
