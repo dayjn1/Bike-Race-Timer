@@ -64,7 +64,7 @@
             this.label2.Font = new System.Drawing.Font("Impact", 100.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.Location = new System.Drawing.Point(505, 583);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(521, 408);
+            this.label2.Size = new System.Drawing.Size(516, 404);
             this.label2.TabIndex = 3;
             this.label2.Text = "Laps \r\nTo Go: ";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -83,8 +83,8 @@
             // 
             // MountainBikeTimer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
