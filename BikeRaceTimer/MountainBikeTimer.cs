@@ -1,17 +1,21 @@
+using System.Diagnostics;
+
 namespace BikeRaceTimer
 {
     public partial class MountainBikeTimer : Form
     {
         private int CDElapsedSeconds = 600;
-        private int CUElapsedSeconds = 0;
-        private bool CountDownDone = false;
         private int LapsToGo = 0;
 
-        public MountainBikeTimer()
+        StopWatchWithOffset SW;
+
+
+        public MountainBikeTimer(int CDSec)
         {
             InitializeComponent();
             CountDown.Interval = 1000;
             CountUp.Interval = 1000;
+            this.CDElapsedSeconds = CDSec;
             TimeSpan time = TimeSpan.FromSeconds(CDElapsedSeconds);
             label1.Text = time.ToString(@"hh\:mm\:ss");
         }
@@ -25,37 +29,48 @@ namespace BikeRaceTimer
             if (CDElapsedSeconds == 0)
             {
                 CountDown.Enabled = false;
+
+                this.SW = new StopWatchWithOffset(TimeSpan.FromSeconds(0));
+                this.SW.Start();
+                
                 CountUp.Enabled = true;
-                CountDownDone = true;
             }
         }
 
-        public void Start()
+        public void Start(string DownOrSW)
         {
-            if (CountDown.Enabled == false && CountDownDone == false)
+            if (DownOrSW == "Count Down" && CountDown.Enabled == false && CountUp.Enabled == false && CDElapsedSeconds > 0)
                 CountDown.Enabled = true;
-            else if (CountUp.Enabled == false && CountDownDone)
+            else if(DownOrSW == "Stopwatch" && CountDown.Enabled == false && CountUp.Enabled == false)
+            {
                 CountUp.Enabled = true;
+                if (this.SW != null)
+                    this.SW.Start();
+            }
+                
         }
 
-        public void Stop()
+        public void Stop(string DownOrSW)
         {
-            if (CountDown.Enabled == true)
+            if (DownOrSW == "Count Down" && CountDown.Enabled == true && CountUp.Enabled == false)
                 CountDown.Enabled = false;
-            else if (CountUp.Enabled == true)
+            else if (DownOrSW == "Stopwatch" && CountDown.Enabled == false && CountUp.Enabled == true)
+            {
                 CountUp.Enabled = false;
+                if (this.SW != null)
+                    this.SW.Stop();
+            }
         }
 
         public void CountUp_Tick(object sender, EventArgs e)
         {
-            CUElapsedSeconds++;
-            TimeSpan time = TimeSpan.FromSeconds(CUElapsedSeconds);
-            label1.Text = time.ToString(@"hh\:mm\:ss");
-        }
+            if(this.SW == null)
+            {
+                this.SW = new StopWatchWithOffset(TimeSpan.FromSeconds(0));
+                this.SW.Start();
+            }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
+            label1.Text = SW.ElapsedTimeSpan.ToString(@"hh\:mm\:ss");
         }
 
         public void IncrementLap()
@@ -70,27 +85,16 @@ namespace BikeRaceTimer
             LapCounter.Text = LapsToGo.ToString();
         }
 
-        public void ResetLap()
+        public void UpdateVals(string DownOrSW, int seconds)
         {
-            LapsToGo = 0;
-            LapCounter.Text = LapsToGo.ToString();
-        }
-
-        public void SetCountDownDone()
-        {
-            CountDownDone = true;
-        }
-
-        public void UnsetCountDownDone()
-        {
-            CountDownDone = false;
-        }
-
-
-        public void UpdateVals(int CD, int CU)
-        {
-            CDElapsedSeconds = CD;
-            CUElapsedSeconds = CU;
+            if (DownOrSW == "Count Down")
+                CDElapsedSeconds = seconds;
+            else if (DownOrSW == "Stopwatch")
+            {
+                this.SW = new StopWatchWithOffset(TimeSpan.FromSeconds(seconds));
+                if (CountUp.Enabled)
+                    this.SW.Start();
+            }
         }
     }
 }

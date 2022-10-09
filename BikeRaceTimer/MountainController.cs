@@ -12,12 +12,10 @@ namespace BikeRaceTimer
 {
     public partial class MountainController : Form
     {
-        MountainBikeTimer MTB = new MountainBikeTimer();
+        MountainBikeTimer MTB;
         bool EnableCU = false;
         bool EnableCD = true;
-        int CUSec = 0, CUMin = 0, CUHrs = 0;
-        int CDSec = 0, CDMin = 10;
-
+        
         public MountainController()
         {
             InitializeComponent();
@@ -25,81 +23,36 @@ namespace BikeRaceTimer
 
         private void StartButton_Click(object sender, EventArgs e)
         {
-            MTB.Show();
-            MTB.Start();
+            if(this.TimerType.Text != null && this.TimerType.Text != "")
+                MTB.Start(this.TimerType.Text);
         }
 
         private void StopButton_Click(object sender, EventArgs e)
         {
-            MTB.Stop();
+            if (this.TimerType.Text != null && this.TimerType.Text != "")
+                MTB.Stop(this.TimerType.Text);
         }
 
-        private void CDSelect_CheckedChanged(object sender, EventArgs e)
+
+        private void ChangeTimeButton_Click(object sender, EventArgs e)
         {
-            if (CDSelect.Checked)
+            int calculatedSeconds;
+            
+            ChangeTime TC = new ChangeTime();
+            TC.ShowDialog();
+
+            if (TC.Submit == true)
             {
-                MTB.UnsetCountDownDone();
+                calculatedSeconds = TC.SendResults();
+                MTB.UpdateVals(this.TimerType.Text, calculatedSeconds);
             }
-        }
 
-        private void CUSelect_CheckedChanged(object sender, EventArgs e)
+        }      
+
+        private void BeginButton_Click(object sender, EventArgs e)
         {
-            if (CUSelect.Checked)
-            {
-                MTB.SetCountDownDone();
-            }
-        }
-
-        private void ResetButton_Click(object sender, EventArgs e)
-        {
-            EnableCU = false;
-            EnableCD = false;
-            CUSec = 0;
-            CUSeconds.Value = CUSec;
-
-            CUMin = 0;
-            CUMinutes.Value = CUMin;
-
-            CUHrs = 0;
-            CUHours.Value = CUHrs;
-
-            CDSec = 0;
-            CDSeconds.Value = CDSec;
-
-            CDMin = 10;
-            CDMinutes.Value = CDMin;
-
-            MTB.ResetLap();
-
-            int CDTotTime = CDMin * 60 + CDSec;
-            int CUTotTime = CUHrs * 3600 + CUMin * 60 + CUSec;
-
-            MTB.UpdateVals(CDTotTime, CUTotTime);
-        }
-
-        private void CDMinutes_ValueChanged(object sender, EventArgs e)
-        {
-            CDMin = (int)CDMinutes.Value;
-        }
-
-        private void CDSeconds_ValueChanged(object sender, EventArgs e)
-        {
-            CDSec = (int)CDSeconds.Value;
-        }
-
-        private void CUHours_ValueChanged(object sender, EventArgs e)
-        {
-            CUHrs = (int)CUHours.Value;
-        }
-
-        private void CUMinutes_ValueChanged(object sender, EventArgs e)
-        {
-            CUMin = (int)CUMinutes.Value;
-        }
-
-        private void CUSeconds_ValueChanged(object sender, EventArgs e)
-        {
-            CUSec = (int)CUSeconds.Value;
+            MTB = new MountainBikeTimer((int)this.CountDownNUD.Value * 60);
+            MTB.Show();
         }
 
         private void IncrementButton_Click(object sender, EventArgs e)
@@ -110,15 +63,6 @@ namespace BikeRaceTimer
         private void DecrementButton_Click(object sender, EventArgs e)
         {
             MTB.DecrementLap();
-        }
-
-        private void UpdateButton_Click(object sender, EventArgs e)
-        {
-            int CDTotTime = CDMin * 60 + CDSec;
-            int CUTotTime = CUHrs * 3600 + CUMin * 60 + CUSec;
-
-
-            MTB.UpdateVals(CDTotTime, CUTotTime);
         }
     }
 }

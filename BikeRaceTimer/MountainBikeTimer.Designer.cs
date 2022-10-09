@@ -51,7 +51,6 @@
             this.label1.Size = new System.Drawing.Size(1487, 609);
             this.label1.TabIndex = 0;
             this.label1.Text = "label1";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // CountUp
             // 
@@ -95,7 +94,7 @@
             this.DoubleBuffered = true;
             this.Name = "MountainBikeTimer";
             this.ShowIcon = false;
-            this.Text = "Peryton XC";
+            this.Text = "Highlands CX";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
             this.PerformLayout();

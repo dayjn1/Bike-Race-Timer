@@ -40,7 +40,8 @@ namespace BikeRaceTimer
 
         private void SWForDamHarr_Tick(object sender, EventArgs e)
         {
-            DamHarrTimerLabel.Text = DamHarrTimer.ElapsedTimeSpan.ToString(@"hh\:mm\:ss");
+            if(DamHarrTimer != null)
+                DamHarrTimerLabel.Text = DamHarrTimer.ElapsedTimeSpan.ToString(@"hh\:mm\:ss");
         }
 
         private void SWForOak_Tick(object sender, EventArgs e)
@@ -115,6 +116,8 @@ namespace BikeRaceTimer
                 CDForOak.Enabled = true;
         }
 
+        // add actual start capability - breaks if try to manually start the count up
+        // scratch that - will work if you update first - how to make this better?
         public void StartPauseOakUp()
         {
             if (SWForOak.Enabled)
@@ -133,39 +136,5 @@ namespace BikeRaceTimer
             CDOakElapsedSeconds = seconds;
         }
 
-    }
-
-    public class StopWatchWithOffset
-    {
-        private Stopwatch _stopwatch = null;
-        TimeSpan _offsetTimeSpan;
-
-        public StopWatchWithOffset(TimeSpan offsetElapsedTimeSpan)
-        {
-            _offsetTimeSpan = offsetElapsedTimeSpan;
-            _stopwatch = new Stopwatch();
-        }
-
-        public void Start()
-        {
-            _stopwatch.Start();
-        }
-
-        public void Stop()
-        {
-            _stopwatch.Stop();
-        }
-
-        public TimeSpan ElapsedTimeSpan
-        {
-            get
-            {
-                return _stopwatch.Elapsed + _offsetTimeSpan;
-            }
-            set
-            {
-                _offsetTimeSpan = value;
-            }
-        }
     }
 }

@@ -20,3 +20,4 @@ C:\Users\janin\Documents\GitHub\Bike-Race-Timer\BikeRaceTimer\obj\Debug\net6.0-w
 C:\Users\janin\Documents\GitHub\Bike-Race-Timer\BikeRaceTimer\obj\Debug\net6.0-windows\BikeRaceTimer.ChooseController.resources
 C:\Users\janin\Documents\GitHub\Bike-Race-Timer\BikeRaceTimer\obj\Debug\net6.0-windows\BikeRaceTimer.GravelController.resources
 C:\Users\janin\Documents\GitHub\Bike-Race-Timer\BikeRaceTimer\obj\Debug\net6.0-windows\BikeRaceTimer.MountainController.resources
+C:\Users\janin\Documents\GitHub\Bike-Race-Timer\BikeRaceTimer\obj\Debug\net6.0-windows\BikeRaceTimer.ChangeTime.resources
