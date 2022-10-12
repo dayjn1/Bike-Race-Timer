@@ -50,11 +50,11 @@ namespace BikeRaceTimer
                 
         }
 
-        public void Stop(string DownOrSW)
+        public void Stop()
         {
-            if (DownOrSW == "Count Down" && CountDown.Enabled == true && CountUp.Enabled == false)
+            if (CountDown.Enabled == true && CountUp.Enabled == false)
                 CountDown.Enabled = false;
-            else if (DownOrSW == "Stopwatch" && CountDown.Enabled == false && CountUp.Enabled == true)
+            else if (CountDown.Enabled == false && CountUp.Enabled == true)
             {
                 CountUp.Enabled = false;
                 if (this.SW != null)

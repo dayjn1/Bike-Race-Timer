@@ -29,8 +29,7 @@ namespace BikeRaceTimer
 
         private void StopButton_Click(object sender, EventArgs e)
         {
-            if (this.TimerType.Text != null && this.TimerType.Text != "")
-                MTB.Stop(this.TimerType.Text);
+            MTB.Stop();
         }
 
 
